@@ -2,13 +2,13 @@
 
 namespace MagicVilla_VillaAPI.Data
 {
-    public  static class VillaStore
+    public static class VillaStore
     {
         public static List<VillaDTO> villaList = new List<VillaDTO>
         {
-            new VillaDTO() {id =1 , Name= "Beach View"},
-            new VillaDTO() {id =2 ,Name="Mpontain View"}
+            new VillaDTO() {Id =1 , Name= "Beach View",Sqft=100,Occupancy=5},
+            new VillaDTO() {Id =2 ,Name="Mountain View",Sqft=500,Occupancy=6}
         };
     };
-    }
+
 }

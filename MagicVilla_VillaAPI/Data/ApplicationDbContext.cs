@@ -1,4 +1,5 @@
-﻿using MagicVilla_VillaAPI.Models;
+﻿using MagicVilla_API.Models;
+using MagicVilla_VillaAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_VillaAPI.Data
@@ -7,9 +8,11 @@ namespace MagicVilla_VillaAPI.Data
         
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public  DbSet<Villa> Villas { get; set; }
+        
+        public DbSet<Villa> Villas { get; set; }
         public DbSet<VillaNumber> VillaNumbers { get; set; }
 
+        public DbSet<LocalUser> LocalUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,7 +22,7 @@ namespace MagicVilla_VillaAPI.Data
                     Id = 1,
                     Name = "Royal Villa",
                     Details = " This is sample villa",
-                    ImageUrl = "",
+                    ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa1.jpg",
                     Occupancy = 5,
                     Rate = 1100,
                     Sqft = 100,
@@ -32,7 +35,7 @@ namespace MagicVilla_VillaAPI.Data
                     Id = 2,
                     Name = "Premium Pool Villa",
                     Details = " This is sample  Pool villa",
-                    ImageUrl = "",
+                    ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa2.jpg",
                     Occupancy = 88,
                     Rate = 500,
                     Sqft = 555,
@@ -44,14 +47,38 @@ namespace MagicVilla_VillaAPI.Data
                     Id = 3,
                     Name = "Luxury Pool Villa",
                     Details = " This is Luxury Pool villa",
-                    ImageUrl = "",
+                    ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa3.jpg",
                     Occupancy = 8,
                     Rate = 5000,
                     Sqft = 444,
                     Amenity = "",
                     CreatedDate = DateTime.Now
 
-                });
+                },
+                new Villa
+                {
+                    Id = 4,
+                    Name = "Diamond Villa",
+                    Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                    ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa4.jpg",
+                    Occupancy = 4,
+                    Rate = 550,
+                    Sqft = 900,
+                    Amenity = "",
+                    CreatedDate = DateTime.Now
+                },
+              new Villa
+              {
+                  Id = 5,
+                  Name = "Diamond Pool Villa",
+                  Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                  ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa5.jpg",
+                  Occupancy = 4,
+                  Rate = 600,
+                  Sqft = 1100,
+                  Amenity = "",
+                  CreatedDate = DateTime.Now
+              });
         }
     }
 }

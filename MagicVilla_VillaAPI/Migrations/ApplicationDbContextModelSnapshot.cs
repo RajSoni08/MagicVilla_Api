@@ -22,6 +22,31 @@ namespace MagicVilla_VillaAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MagicVilla_API.Models.LocalUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LocalUsers");
+                });
+
             modelBuilder.Entity("MagicVilla_VillaAPI.Models.Villa", b =>
                 {
                     b.Property<int>("Id")
@@ -31,18 +56,15 @@ namespace MagicVilla_VillaAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Amenity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -70,9 +92,9 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 4, 27, 20, 2, 54, 663, DateTimeKind.Local).AddTicks(5465),
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 53, 25, 90, DateTimeKind.Local).AddTicks(9050),
                             Details = " This is sample villa",
-                            ImageUrl = "",
+                            ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa1.jpg",
                             Name = "Royal Villa",
                             Occupancy = 5,
                             Rate = 1100.0,
@@ -83,9 +105,9 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 4, 27, 20, 2, 54, 663, DateTimeKind.Local).AddTicks(5476),
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 53, 25, 90, DateTimeKind.Local).AddTicks(9062),
                             Details = " This is sample  Pool villa",
-                            ImageUrl = "",
+                            ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa2.jpg",
                             Name = "Premium Pool Villa",
                             Occupancy = 88,
                             Rate = 500.0,
@@ -96,13 +118,39 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 4, 27, 20, 2, 54, 663, DateTimeKind.Local).AddTicks(5478),
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 53, 25, 90, DateTimeKind.Local).AddTicks(9064),
                             Details = " This is Luxury Pool villa",
-                            ImageUrl = "",
+                            ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa3.jpg",
                             Name = "Luxury Pool Villa",
                             Occupancy = 8,
                             Rate = 5000.0,
                             Sqft = 444,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amenity = "",
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 53, 25, 90, DateTimeKind.Local).AddTicks(9065),
+                            Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa4.jpg",
+                            Name = "Diamond Villa",
+                            Occupancy = 4,
+                            Rate = 550.0,
+                            Sqft = 900,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Amenity = "",
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 53, 25, 90, DateTimeKind.Local).AddTicks(9066),
+                            Details = "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Donec ex mauris, hendrerit quis nibh ac, efficitur fringilla enim.",
+                            ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa5.jpg",
+                            Name = "Diamond Pool Villa",
+                            Occupancy = 4,
+                            Rate = 600.0,
+                            Sqft = 1100,
                             UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -116,7 +164,6 @@ namespace MagicVilla_VillaAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SpecialDetails")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")

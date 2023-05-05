@@ -10,6 +10,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MagicVilla_VillaAPI.Repository.iRepository;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
@@ -35,7 +36,10 @@ namespace MagicVilla_VillaAPI.Controllers
             _logger = logger;
         }*/
 
+
         [HttpGet]
+        [Authorize]
+
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
             try
@@ -53,7 +57,9 @@ namespace MagicVilla_VillaAPI.Controllers
                 return _response;
             }
         }
+
         [HttpGet("{id:int}",Name= "GetVilla")]
+        [Authorize (Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -97,7 +103,7 @@ namespace MagicVilla_VillaAPI.Controllers
             }*/
            if(await _dbVilla.GetAsync(u=>u.Name.ToLower()== createDTO.Name.ToLower())!=null)
             {
-                ModelState.AddModelError("Custom Error", "Villa Already Exist");
+                ModelState.AddModelError("Errormessages", "Villa Already Exist");
                 return BadRequest(ModelState);
             }
             if (createDTO == null)
@@ -139,6 +145,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("{id:int}", Name = "DeleteVilla")]
+        [Authorize(Roles = "custom")]
         public async Task<ActionResult<APIResponse>> DeleteVilla(int id)
         {
             try { 

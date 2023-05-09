@@ -6,6 +6,8 @@ namespace MagicVilla_Web.Models
     {
         internal string Url;
 
+        public string Token { get; set; }
+
         public ApiType ApiType { get; set; } = ApiType.GET;
         public string URL { get; set; }
         public  object Data { get; set; }

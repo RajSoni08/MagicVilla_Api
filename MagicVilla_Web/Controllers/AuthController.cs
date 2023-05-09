@@ -52,6 +52,7 @@ namespace MagicVilla_Web.Controllers
 
 
                 HttpContext.Session.SetString(SD.SessionToken, model.Token);
+
                 return RedirectToAction("Index", "Home");
 
             }
